@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_colors.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../cubit/mood_list_cubit.dart';
 import '../widgets/mood_card.dart';
 import '../widgets/empty_state.dart';
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'MindPalette',
+              AppLocalizations.of(context)!.appTitle,
               style: theme.textTheme.headlineMedium,
             ),
             Text(
@@ -102,20 +103,20 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 final mood = state.moods[index];
                 return MoodCard(
-                  mood: mood,
-                  onDelete: () {
-                    context.read<MoodListCubit>().removeMood(mood.id);
-                  },
-                ).animate().fadeIn(
-                  delay: (100 * index).ms,
-                  duration: 400.ms,
-                ).slideY(
-                  begin: 0.2,
-                  end: 0,
-                  delay: (100 * index).ms,
-                  duration: 400.ms,
-                  curve: Curves.easeOutCubic,
-                );
+                      mood: mood,
+                      onDelete: () {
+                        context.read<MoodListCubit>().removeMood(mood.id);
+                      },
+                    )
+                    .animate()
+                    .fadeIn(delay: (100 * index).ms, duration: 400.ms)
+                    .slideY(
+                      begin: 0.2,
+                      end: 0,
+                      delay: (100 * index).ms,
+                      duration: 400.ms,
+                      curve: Curves.easeOutCubic,
+                    );
               },
             );
           }
@@ -127,9 +128,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           await Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const AddMoodPage(),
-            ),
+            MaterialPageRoute(builder: (context) => const AddMoodPage()),
           );
         },
         icon: const Icon(Icons.add),

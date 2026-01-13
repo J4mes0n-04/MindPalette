@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 
@@ -12,6 +13,10 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void toggleNotifications() {
     emit(state.copyWith(notificationsEnabled: !state.notificationsEnabled));
+  }
+
+  void setLocale(Locale locale) {
+    emit(state.copyWith(locale: locale));
   }
 
   void exportData() {

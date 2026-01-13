@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../features/mood/presentation/pages/home_page.dart';
 import '../../features/statistics/presentation/pages/statistics_page.dart';
 import '../../features/settings/presentation/pages/settings_page.dart';
+import '../../l10n/app_localizations.dart';
 
 class AppNavigation extends StatefulWidget {
   const AppNavigation({super.key});
@@ -49,21 +50,21 @@ class _AppNavigationState extends State<AppNavigation> {
             _currentIndex = index;
           });
         },
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home_outlined),
+            selectedIcon: const Icon(Icons.home),
+            label: AppLocalizations.of(context)!.home,
           ),
           NavigationDestination(
-            icon: Icon(Icons.bar_chart_outlined),
-            selectedIcon: Icon(Icons.bar_chart),
-            label: 'Statistics',
+            icon: const Icon(Icons.bar_chart_outlined),
+            selectedIcon: const Icon(Icons.bar_chart),
+            label: AppLocalizations.of(context)!.statistics,
           ),
           NavigationDestination(
-            icon: Icon(Icons.settings_outlined),
-            selectedIcon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: const Icon(Icons.settings_outlined),
+            selectedIcon: const Icon(Icons.settings),
+            label: AppLocalizations.of(context)!.settings,
           ),
         ],
       ),

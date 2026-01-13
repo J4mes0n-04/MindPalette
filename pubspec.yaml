@@ -28,8 +28,12 @@ dependencies:
   # UI & Icons
   cupertino_icons: ^1.0.8
 
+  # Localization
+  flutter_localizations:
+    sdk: flutter
+
   # Utilities
-  intl: ^0.19.0
+  intl: ^0.20.2
   path_provider: ^2.1.4
 
 dev_dependencies:
@@ -49,6 +53,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
 
   assets:
     - assets/images/

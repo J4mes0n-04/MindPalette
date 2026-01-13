@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'core/theme/app_theme.dart';
 import 'core/di/injection.dart';
@@ -9,6 +10,7 @@ import 'features/mood/presentation/cubit/mood_list_cubit.dart';
 import 'features/mood/presentation/cubit/add_mood_cubit.dart';
 import 'features/statistics/presentation/cubit/statistics_cubit.dart';
 import 'features/settings/presentation/cubit/settings_cubit.dart';
+import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,9 +40,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (context) => AddMoodCubit(
-            addMood: Injection.addMood,
-          ),
+          create: (context) => AddMoodCubit(addMood: Injection.addMood),
         ),
         BlocProvider(
           create: (context) => StatisticsCubit(
@@ -48,9 +48,7 @@ class MyApp extends StatelessWidget {
             repository: Injection.moodRepository,
           ),
         ),
-        BlocProvider(
-          create: (context) => SettingsCubit(),
-        ),
+        BlocProvider(create: (context) => SettingsCubit()),
       ],
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, settingsState) {
@@ -59,7 +57,17 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            themeMode: settingsState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            themeMode: settingsState.isDarkMode
+                ? ThemeMode.dark
+                : ThemeMode.light,
+            locale: settingsState.locale,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [Locale('ru'), Locale('en')],
             home: const AppNavigation(),
           );
         },
