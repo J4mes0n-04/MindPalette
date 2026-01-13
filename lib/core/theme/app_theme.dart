@@ -10,7 +10,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      
+
       // Color scheme
       colorScheme: const ColorScheme.light(
         primary: AppColors.lightPrimary,
@@ -21,8 +21,8 @@ class AppTheme {
         error: AppColors.error,
       ),
 
-      scaffoldBackgroundColor: AppColors.lightBackground,
-      
+      scaffoldBackgroundColor: Colors.transparent,
+
       // App bar theme
       appBarTheme: const AppBarTheme(
         elevation: 0,
@@ -118,7 +118,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      
+
       // Color scheme
       colorScheme: const ColorScheme.dark(
         primary: AppColors.darkPrimary,
@@ -129,8 +129,8 @@ class AppTheme {
         error: AppColors.error,
       ),
 
-      scaffoldBackgroundColor: AppColors.darkBackground,
-      
+      scaffoldBackgroundColor: Colors.transparent,
+
       // App bar theme
       appBarTheme: const AppBarTheme(
         elevation: 0,

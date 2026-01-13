@@ -22,9 +22,25 @@ class _AppNavigationState extends State<AppNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        children: [
+          // Background image
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: const AssetImage('assets/images/digital-vector.jpg'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.white.withOpacity(0.1), // 90% transparent
+                  BlendMode.dstATop,
+                ),
+              ),
+            ),
+          ),
+          // Content
+          IndexedStack(index: _currentIndex, children: _pages),
+        ],
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentIndex,
